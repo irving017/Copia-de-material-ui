@@ -1,24 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import MaterialTable from './components/MaterialTable';
+import FlexTable from './components/FlexTable/FlexTable';
+import GridTable from './components/GridTable/GridTable';
+import EnhancedTable from './components/LearningSort';
+import UploadFile from './components/UploadFile/uploadFile';
+import { Form, Field } from 'react-final-form'
+
+const onSubmit = (values) => {
+  console.log(values)
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route path='/materialTable'>
+          <MaterialTable/>
+        </Route>
+        <Route path='/flexTable'>
+          <FlexTable/>
+        </Route>
+        <Route path='/gridTable'>
+          <GridTable/>
+        </Route>
+        <Route path='/sortTable'>
+          <EnhancedTable/>
+        </Route>
+        <Route path='/uploadFile'>
+          <div style={{backgroundColor: "#FFFFFF", position: "absolute", top: "25vh", left: "5vw"}}>
+            <Form
+            onSubmit={onSubmit}
+            render = { ({ handleSubmit }) =>(
+              <form onSubmit={handleSubmit}>
+                <Field name="input">
+                  {props => {
+                    return (
+                    <UploadFile
+                      name={props.input.name}
+                      value={props.input.value}
+                      onChange={props.input.onChange}
+                    />
+                  )
+                  }}
+                </Field>
+                <Field name="text" component="input" placeholder="First Name"></Field>
+                <button type="submit">Submit</button>
+              </form>
+            )}
+            >
+            </Form>
+          </div>
+        </Route>
+      </Switch>
     </div>
   );
 }

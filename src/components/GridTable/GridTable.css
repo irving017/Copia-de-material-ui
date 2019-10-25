@@ -1,0 +1,8 @@
+.board2 {
+  width: 80vw;
+  margin: 10vh 10vw;
+  padding: 50px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: #F4F8F9;
+}
