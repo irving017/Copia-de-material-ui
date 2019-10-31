@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import MaterialTable from './components/MaterialTable';
 import FlexTable from './components/FlexTable/FlexTable';
 import GridTable from './components/GridTable/GridTable';
 import EnhancedTable from './components/LearningSort';
 import UploadFile from './components/UploadFile/uploadFile';
+import Toggle from './components/Toggle/Toggle';
 import { Form, Field } from 'react-final-form'
 
 const onSubmit = (values) => {
@@ -12,6 +13,8 @@ const onSubmit = (values) => {
 }
 
 function App() {
+  const [checked , setChecked] = useState(false);
+
   return (
     <div>
       <Switch>
@@ -26,6 +29,11 @@ function App() {
         </Route>
         <Route path='/sortTable'>
           <EnhancedTable/>
+        </Route>
+        <Route path='/toggle'>
+        <div style={{position: "absolute", top: "25vh", left: "5vw"}}>
+          <Toggle checked={checked} onChange={(event) => setChecked(!checked)} />
+        </div>
         </Route>
         <Route path='/uploadFile'>
           <div style={{backgroundColor: "#FFFFFF", position: "absolute", top: "25vh", left: "5vw"}}>
