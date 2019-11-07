@@ -1,0 +1,7 @@
+.tooltip {
+  border: 1px solid transparent;
+}
+
+.tooltip:hover {
+  border: 1px solid #0084FF;
+}

@@ -7,9 +7,13 @@ import GridTable from './components/GridTable/GridTable';
 import EnhancedTable from './components/LearningSort';
 import UploadFile from './components/UploadFile/uploadFile';
 import Toggle from './components/Toggle/Toggle';
+import Tooltip from './components/Tooltip/Tooltip';
 import Radio from './components/Radio/Radio';
+import DragDrop from './components/DragDrop/DragDrop';
+import Loading from './components/Loading/Loading';
 import backgrounds from './backgrounds';
 import { Form, Field } from 'react-final-form';
+import { border } from '@material-ui/system';
 
 function App() {
   const [checked , setChecked] = useState(false);
@@ -57,16 +61,34 @@ function App() {
         <Route path='/flexTable'>
           <FlexTable/>
         </Route>
+        <Route path='/tooltip'>
+          <div style={{ marginTop: "25vh", marginLeft: "5vw"}}>
+            <Tooltip>
+              <div>El bug</div>
+            </Tooltip>
+          </div>
+        </Route>
         <Route path='/gridTable'>
           <GridTable/>
         </Route>
         <Route path='/sortTable'>
           <EnhancedTable/>
         </Route>
+        <Route path='/loading'>
+          <div style={{ width: '50vw', height: '50px', margin: '50px'}}><Loading /></div>
+          <div style={{ width: '20vw', height: '50px', margin: '50px'}}><Loading /></div>
+          <div style={{ width: '80vw', height: '50px', margin: '50px'}}><Loading/></div>
+          <div style={{ width: '100px', height: '100px', margin: '50px', borderRadius:'50%'}}>
+            <Loading borderRadius='50%'/>
+          </div>
+        </Route>
+        <Route path='/dragdrop'>
+          <DragDrop/>
+        </Route>
         <Route path='/toggle'>
-        <div style={{position: "absolute", top: "25vh", left: "5vw"}}>
-          <Toggle checked={checked} onChange={(event) => setChecked(!checked)} />
-        </div>
+          <div style={{position: "absolute", top: "25vh", left: "5vw"}}>
+            <Toggle checked={checked} onChange={(event) => setChecked(!checked)} />
+          </div>
         </Route>
         <Route path='/uploadFile'>
           <div style={{backgroundColor: "#FFFFFF", position: "absolute", top: "25vh", left: "5vw"}}>
