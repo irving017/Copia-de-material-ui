@@ -1,7 +1,92 @@
 .tooltip {
-  border: 1px solid transparent;
+  position: relative;
+  display: inline-block;
+  padding: 4px;
 }
 
-.tooltip:hover {
-  border: 1px solid #0084FF;
+.tooltip-bubble {
+  visibility: hidden;
+  position: absolute;
+  z-index: 10;
+}
+
+.tooltip-bubble::after {
+  content: '';
+  position: absolute;
+}
+
+.tooltip-top {
+  bottom: 100%;
+  left: 50%;
+  padding-bottom: 4px;
+  transform: translateX(-50%);
+}
+
+.tooltip-top::after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #0084FF;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-bottom {
+  top: 100%;
+  left: 50%;
+  padding-top: 4px;
+  transform: translateX(-50%);
+}
+
+.tooltip-bottom::after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #0084FF;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-left {
+  top: 50%;
+  right: 100%;
+  padding-right: 4px;
+  transform: translateY(-50%);
+}
+
+.tooltip-left::after {
+  border-left: 4px solid #0084FF;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.tooltip-right {
+  top: 50%;
+  left: 100%;
+  padding-left: 4px;
+  transform: translateY(-50%);
+}
+
+.tooltip-right::after {
+  border-right: 4px solid #0084FF;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.tooltip-message {
+  background: #0084FF;
+  border-radius: 2px;
+  color: white;
+  padding: 4px;
+  text-align: center;
+}
+
+.tooltip:hover .tooltip-bubble{
+  visibility: visible;
 }

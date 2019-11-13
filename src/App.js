@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import MaterialTable from './components/MaterialTable';
 import FlexTable from './components/FlexTable/FlexTable';
 import GridTable from './components/GridTable/GridTable';
 import EnhancedTable from './components/LearningSort';
 import UploadFile from './components/UploadFile/uploadFile';
 import Toggle from './components/Toggle/Toggle';
-import Tooltip from './components/Tooltip/Tooltip';
-import Radio from './components/Radio/Radio';
 import DragDrop from './components/DragDrop/DragDrop';
+// import Tooltip from './components/Tooltip/Tooltip';
+import Radio from './components/Radio/Radio';
 import Loading from './components/Loading/Loading';
 import backgrounds from './backgrounds';
 import { Form, Field } from 'react-final-form';
-import { border } from '@material-ui/system';
+import { Tooltip } from 'generation-ui-components/dist/generation-ui-components';
 
 function App() {
   const [checked , setChecked] = useState(false);
@@ -49,6 +50,11 @@ function App() {
         <Route path='/materialTable'>
           <MaterialTable/>
         </Route>
+        <Route path='/dnd'>
+          <div style={{position: "absolute", top: "25vh", left: "5vw"}}>
+            <DragDrop />
+          </div>
+        </Route>
         <Route path='/radio'>
           <div style={{position: "absolute", top: "25vh", left: "5vw"}}>
               <p>Mira chots</p>
@@ -62,9 +68,9 @@ function App() {
           <FlexTable/>
         </Route>
         <Route path='/tooltip'>
-          <div style={{ marginTop: "25vh", marginLeft: "5vw"}}>
-            <Tooltip>
-              <div>El bug</div>
+          <div style={{position: "absolute", top: "40vh", left: "20vw"}}>
+            <Tooltip title='Pausa' placement='top'>
+              <PauseCircleOutlineIcon />
             </Tooltip>
           </div>
         </Route>
@@ -81,9 +87,6 @@ function App() {
           <div style={{ width: '100px', height: '100px', margin: '50px', borderRadius:'50%'}}>
             <Loading borderRadius='50%'/>
           </div>
-        </Route>
-        <Route path='/dragdrop'>
-          <DragDrop/>
         </Route>
         <Route path='/toggle'>
           <div style={{position: "absolute", top: "25vh", left: "5vw"}}>
