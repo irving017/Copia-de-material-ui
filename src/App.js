@@ -7,6 +7,7 @@ import FlexTable from './components/FlexTable/FlexTable';
 import GridTable from './components/GridTable/GridTable';
 import EnhancedTable from './components/LearningSort';
 import UploadFile from './components/UploadFile/uploadFile';
+import UploadFileForm from './components/UploadFile/uploadfileForm';
 import Toggle from './components/Toggle/Toggle';
 import DragDrop from './components/DragDrop/DragDrop';
 // import Tooltip from './components/Tooltip/Tooltip';
@@ -19,9 +20,6 @@ import { Tooltip } from 'generation-ui-components/dist/generation-ui-components'
 function App() {
   const [checked , setChecked] = useState(false);
   const [pokemon, setPokemon] = useState(window.localStorage.getItem('pokemon') || 'charizard');
-  const onSubmit = (values) => {
-    console.log(values)
-  }
   const changeBackground = (event) => {
     if (backgrounds[event.target.value]) {
       window.localStorage.setItem('pokemon', event.target.value);
@@ -29,12 +27,9 @@ function App() {
     }
     return 
   };
-
   const handleChangeExample = (event) => {
     console.log(event.target.value);
-  }
-
-
+  };
   return (
     <div style={{backgroundImage: `url(${backgrounds[pokemon]})`, backgroundSize: 'cover' ,backgroundRepeat: 'no-repeat', height: '100vh', position:'absolute', margin:0, width:'100vw', transition: 'background-image 1s ease-out'}}>
       <Route path='/'>
@@ -95,27 +90,12 @@ function App() {
         </Route>
         <Route path='/uploadFile'>
           <div style={{backgroundColor: "#FFFFFF", position: "absolute", top: "25vh", left: "5vw"}}>
-            <Form
-            onSubmit={onSubmit}
-            render = { ({ handleSubmit }) =>(
-              <form onSubmit={handleSubmit}>
-                <Field name="input">
-                  {props => {
-                    return (
-                    <UploadFile
-                      name={props.input.name}
-                      value={props.input.value}
-                      onChange={props.input.onChange}
-                    />
-                  )
-                  }}
-                </Field>
-                <Field name="text" component="input" placeholder="First Name"></Field>
-                <button type="submit">Submit</button>
-              </form>
-            )}
-            >
-            </Form>
+            <UploadFile />
+          </div>
+        </Route>
+        <Route path='/uploadFileForm'>
+          <div style={{backgroundColor: "#FFFFFF", position: "absolute", top: "25vh", left: "5vw"}}>
+            <UploadFileForm/>
           </div>
         </Route>
       </Switch>
